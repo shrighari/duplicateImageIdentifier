@@ -1,0 +1,71 @@
+{
+  "name": "jsonfile",
+  "version": "4.0.0",
+  "description": "Easily read/write JSON files.",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jprichardson/node-jsonfile.git"
+  },
+  "keywords": [
+    "read",
+    "write",
+    "file",
+    "json",
+    "fs",
+    "fs-extra"
+  ],
+  "author": "JP Richardson <jprichardson@gmail.com>",
+  "license": "MIT",
+  "optionalDependencies": {
+    "graceful-fs": "^4.1.6"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^7.5.0",
+    "@electron-forge/maker-deb": "^7.5.0",
+    "@electron-forge/maker-rpm": "^7.5.0",
+    "@electron-forge/maker-squirrel": "^7.5.0",
+    "@electron-forge/maker-zip": "^7.5.0",
+    "electron": "^33.2.0",
+    "mocha": "2.x",
+    "rimraf": "^2.4.0",
+    "standard": "^10.0.3"
+  },
+  "main": "main.js",
+  "files": [
+    "main.js"
+  ],
+  "scripts": {
+    "lint": "standard",
+    "test": "npm run lint && npm run unit",
+    "unit": "mocha",
+    "start": "electron .",
+    "make": "electron-forge make"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "duplicate_image_finder"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
+  }
+}
